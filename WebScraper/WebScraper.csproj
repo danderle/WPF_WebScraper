@@ -12,10 +12,13 @@
     <PackageReference Include="PropertyChanged.Fody" Version="3.4.0">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Models\" />
     <Folder Include="NewFolder\" />
+    <Folder Include="Resources\Images\" />
   </ItemGroup>
 
 </Project>

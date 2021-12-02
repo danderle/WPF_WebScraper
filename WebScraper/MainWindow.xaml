@@ -7,30 +7,33 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="450" Width="800">
-    <StackPanel>
-        <TextBox Text="{Binding UrlPath}" />
-        <Button Content="Scrape" 
-                Command="{Binding ScrapeCommand}"/>
+            <ScrollViewer VerticalScrollBarVisibility="Visible">
+        <StackPanel>
+            
+            <Button Content="Scrape Data" 
+                Command="{Binding ScrapeCommand}"
+                    HorizontalAlignment="Center"
+                    Padding="50 20"/>
 
-        <DataGrid ItemsSource="{Binding Items}"
-                  AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
-                <DataGridTemplateColumn Header="Image" >
-                    <DataGridTemplateColumn.CellTemplate>
+                <ItemsControl ItemsSource="{Binding Items}">
+                    <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding ImageSource}" />
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Name}" />
+                                <Viewbox Grid.Column="1">
+                                    <Image Source="{Binding ImagePath}" />
+                                </Viewbox>
+                                <Button Grid.Column="2" Content="Make sound" />
+                            </Grid>
                         </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Sound">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Content="Make sound" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+        
     </StackPanel>
+            </ScrollViewer>    
 </Window>
